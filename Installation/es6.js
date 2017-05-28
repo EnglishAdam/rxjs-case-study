@@ -1,6 +1,6 @@
 /**
  * Installation
- * - npm install rxjs -save
+ * - npm install rxjs --save
  */
 
 // ES6
