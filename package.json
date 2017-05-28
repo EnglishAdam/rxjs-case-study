@@ -1,6 +1,6 @@
 {
   "name": "rxjs-case-study",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Study, practise, exposition, explaination and examples of RxJS.",
   "main": "index.js",
   "scripts": {
