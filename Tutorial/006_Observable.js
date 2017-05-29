@@ -82,14 +82,14 @@ subscriptionObj.unsubscribe();
 // A fourth value is the pushed after a timeout.
 
 var observable = Rx.Observable.create(function (observer) {
-  observer.next(1);
-  observer.next(2);
-  observer.next(3);
-  setTimeout(() => {
-    observer.next(4);
-    observer.complete();
-    observer.next(5); // This is not delivered as is after .complete()
-  }, 1000);
+    observer.next(1);
+    observer.next(2);
+    observer.next(3);
+    setTimeout(() => {
+        observer.next(4);
+        observer.complete();
+        observer.next(5); // This is not delivered as is after .complete()
+    }, 1000);
 });
 
 // Notes:
@@ -103,9 +103,9 @@ var observable = Rx.Observable.create(function (observer) {
 
 console.log('logs before subscribe');
 observable.subscribe({
-  next: x => console.log('got value ' + x),
-  error: err => console.error('something wrong occurred: ' + err),
-  complete: () => console.log('done'),
+    next: x => console.log('got value ' + x),
+    error: err => console.error('something wrong occurred: ' + err),
+    complete: () => console.log('done'),
 });
 console.log('logs after subscribe');
 
@@ -123,15 +123,15 @@ console.log('logs after subscribe');
 // ---------------------------------- Multiple subscriptions
 
 var foo = Rx.Observable.create(function (observer) {
-  console.log('Hello');
-  observer.next(42);
+    console.log('Hello');
+    observer.next(42);
 });
 
 foo.subscribe(function (x) {
-  console.log(x);
+    console.log(x);
 });
 foo.subscribe(function (y) {
-  console.log(y);
+    console.log(y);
 });
 
 // logs: Hello
@@ -148,8 +148,8 @@ foo.subscribe(function (y) {
 // ---------------------------------- Synchronous
 
 var sync = Rx.Observable.create(function (observer) {
-  observer.next('Invoked!');
-  console.log('Logged sync after return.');
+    observer.next('Invoked!');
+    console.log('Logged sync after return.');
 });
 
 sync.subscribe((value) => {
@@ -164,11 +164,11 @@ sync.subscribe((value) => {
 // ---------------------------------- Example 004
 // ---------------------------------- Asynchronous
 
-var async = Rx.Observable.create(function (observer) {  
-  setTimeout(() => {
-      observer.next('Invoked!');
-  }, 1000);  
-  console.log('Logged async before return.');
+var async = Rx.Observable.create(function (observer) {
+    setTimeout(() => {
+        observer.next('Invoked!');
+    }, 1000);
+    console.log('Logged async before return.');
 });
 
 async.subscribe((value) => {
@@ -186,14 +186,14 @@ async.subscribe((value) => {
 // It may be appropriate to wrap the subscription up in try-catch block
 
 var observable = Rx.Observable.create(function subscribe(observer) {
-  try {
-    observer.next(1);
-    observer.next(2);
-    observer.next(3);
-    observer.complete();
-  } catch (err) {
-    observer.error(err); // delivers an error if it caught one
-  }
+    try {
+        observer.next(1);
+        observer.next(2);
+        observer.next(3);
+        observer.complete();
+    } catch (err) {
+        observer.error(err); // delivers an error if it caught one
+    }
 });
 
 
